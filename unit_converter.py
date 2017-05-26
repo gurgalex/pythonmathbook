@@ -1,15 +1,10 @@
 def inputeval(input_string):
-    user_input = input_string.split()
-    number = user_input[0]
-    initial_unit = user_input[1]
-    convert_to_unit = user_input[2]
-
-    return (number, initial_unit, convert_to_unit)
+    return input_string.split()
 
 
 def unitConvert(value, origUnit, ConvertToUnit):
 
-    originalUnitToKiloMeter = {
+    unitConversionTable = {
             "mm": 1 / 1000000,
             "cm": 1 / 100000,
             "dm": 1 / 10000,
@@ -21,23 +16,11 @@ def unitConvert(value, origUnit, ConvertToUnit):
             "mi": 1 / 0.621371
             }
 
-    unitRebased = originalUnitToKiloMeter[origUnit]
-
-    convertTo = {
-            "mm": unitRebased * 1000000,
-            "cm": unitRebased * 100000,
-            "dm": unitRebased * 10000,
-            "m": unitRebased * 1000,
-            "km": unitRebased,
-            "in": unitRebased * 12 * 5280 * 0.621371,
-            "mi": unitRebased * 0.621371,
-            "ft": unitRebased * 5280 * 0.621371,
-            "yd": unitRebased * 0.623171 * 1760
-            }
-
-    if origUnit in originalUnitToKiloMeter:
+    if origUnit in unitConversionTable:
         value = float(value)
-        return value * convertTo[ConvertToUnit]
+        return (value
+                * unitConversionTable[orig_unit]
+                / unitConversionTable[ConvertToUnit])
     else:
         return "Invalid unit conversion"
 
