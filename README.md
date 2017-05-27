@@ -1,2 +1,2 @@
 # pythonmathbook
-My personal code for the challenge exercises
+My code for the challenge exercises in the book Math with Python
