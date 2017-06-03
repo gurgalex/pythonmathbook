@@ -1,4 +1,5 @@
 """Expense visualizer via bar graph"""
+from matplotlib import pyplot as plt
 
 def get_expense_info():
     category = []
@@ -24,4 +25,21 @@ def get_expense_info():
 
     return (category, cost)
 
-category, cost = get_expense_info()
+def plot_expenses(categories, costs):
+    """Plot expenses by category onto a horizontal bar chart
+    :param categories: Sequence of categories used for labels on graph
+    :param costs: Expenditure amount for each category
+    """
+    ## Equal spaced bars
+    positions = [x for x in range(1, len(categories) + 1)]
+    plt.barh(positions, costs)
+    plt.yticks(positions, categories)
+    plt.xlabel("Expenditure")
+    plt.ylabel("Category")
+    plt.title("Expense visualizer")
+    plt.grid()
+    plt.show()
+
+
+categories, cost = get_expense_info()
+plot_expenses(categories, cost)
